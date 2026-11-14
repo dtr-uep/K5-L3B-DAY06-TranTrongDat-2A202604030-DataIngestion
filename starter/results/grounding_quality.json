@@ -1,0 +1,707 @@
+[
+    {
+        "strategy":  "A",
+        "question_id":  "q16",
+        "question":  "Which embedding model is used in the paper\u0027s FAISS example, and what kinds of tasks is it described as suitable for?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  26,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p29:fixed:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  29,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Best Practices\n\nIncompatible embeddings The FAISS index is typically cre-\nated using a specific embeddings model. If a different embed-\ndings model is used during querying (e.g., a different version of\nsentence-transformers), it may lead to retrieval mismatches or\nerrors. Always ensure that the same model is used both during in-\ndexing and querying.\nModel version issues Using an incorrect or unsupported model\nversion (e.g., referencing a non-existent version like Llama 4.5) can\nlead to failures",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p2:fixed:0005",
+                         "source":  "data/arxiv.pdf",
+                         "page":  2,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Models\n(LLMs) by grounding their outputs in real-time, relevant information is illus-\ntrated in the Fig[1]. Unlike static models which generate responses based only\non closed-world knowledge, the RAG process is structured into the following key\nsteps:\n\n1. Data Collection:\nThe workflow begins with the acquisition of relevant, domain specific textual\ndata from various external sources, such as PDFs, structured documents, or\ntext files. These documents represent raw data important for building a t",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p9:fixed:0004",
+                         "source":  "data/arxiv.pdf",
+                         "page":  9,
+                         "metadata":  {
+                                          "section":  "Study Design",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "based models\nlike BERT or Sentence Transformers, which capture the semantic meaning of\nthe text. The embeddings are stored in a vector database optimized for fast\nsimilarity-based retrieval.\nThe RAG system architecture consists of two key components: a retriever,\nwhich converts user queries into vector embeddings to search the vector database,\nand a generator, which synthesizes the retrieved content into a coherent, factual\nresponse. Two types of models are considered: OpenAI’s GPT models, acces",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  0,
+        "grounding_reason":  "Rank 1 discusses embedding compatibility without identifying the requested model. Rank 2 describes data collection. Rank 3 describes embeddings generally without naming the FAISS example model. No rank supplies the answer. The top three do not provide evidence answering the specific question."
+    },
+    {
+        "strategy":  "B",
+        "question_id":  "q16",
+        "question":  "Which embedding model is used in the paper\u0027s FAISS example, and what kinds of tasks is it described as suitable for?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  26,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p26:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  26,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "embeddings = HuggingFaceEmbeddings (model_name=\nembedding_model )\nvector_store = FAISS.from_texts(texts , embeddings)\n\nvector_store.save_local(index_path)\nprint(f\"FAISS index saved to {index_path}\")\n\nif __name__ == \"__main__\":\ntext_folder = \"DataTxt\"\nindex_path = \"DataIndex\"\ncreate_faiss_index (text_folder , index_path)\n\nFunctionality: Creates a FAISS index and saves it in the DataIndex/ folder.\nHere, sentence-transformers/all-MiniLM-L6-v2 is a compact, fast trans-\nformer model that generates sentence embeddings for tasks like semantic\nsearch and text similarity. It’s efficient and ideal for quick, accurate text\nretrieval in applications like FAISS indexing.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p29:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  29,
+                         "metadata":  {
+                                          "section":  "Incompatible embeddings",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Incompatible embeddings The FAISS index is typically cre-\nated using a specific embeddings model. If a different embed-\ndings model is used during querying (e.g., a different version of\nsentence-transformers), it may lead to retrieval mismatches or\nerrors. Always ensure that the same model is used both during in-\ndexing and querying.\nModel version issues Using an incorrect or unsupported model\nversion (e.g., referencing a non-existent version like Llama 4.5) can\nlead to failures during the model loading process. Always verify that\nthe model version you are using is supported and available.\nOverly general prompts Prompts that are too broad or generic\ncan result in vague or irrelevant",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p3:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  3,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "3. Creating Vector Embeddings:\nAfter preprocessing, the chunks of data are transformed into vector repre-\nsentations using embedding models (e.g., BERT, Sentence Transformers).\nThese vector embeddings capture the semantic meaning of the text, allow-\ning the system to perform similarity searches. The vector representations are\nstored in a Vector Store, an indexed database optimized for fast retrieval\nbased on similarity measures.",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 correctly names all-MiniLM-L6-v2 and its semantic search and text similarity tasks. Rank 2 discusses compatibility without naming that model. Rank 3 describes embeddings generally without identifying the example model. Only rank 1 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "C",
+        "question_id":  "q16",
+        "question":  "Which embedding model is used in the paper\u0027s FAISS example, and what kinds of tasks is it described as suitable for?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  26,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p26:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  26,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "embeddings = HuggingFaceEmbeddings (model_name=\nembedding_model )\nvector_store = FAISS.from_texts(texts , embeddings)\n\nvector_store.save_local(index_path)\nprint(f\"FAISS index saved to {index_path}\")\n\nif __name__ == \"__main__\":\ntext_folder = \"DataTxt\"\nindex_path = \"DataIndex\"\ncreate_faiss_index (text_folder , index_path)\n\nFunctionality: Creates a FAISS index and saves it in the DataIndex/ folder.\nHere, sentence-transformers/all-MiniLM-L6-v2 is a compact, fast trans-\nformer model that generates sentence embeddings for tasks like semantic\nsearch and text similarity. It’s efficient and ideal for quick, accurate text\nretrieval in applications like FAISS indexing.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p29:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  29,
+                         "metadata":  {
+                                          "section":  "Incompatible embeddings",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Incompatible embeddings The FAISS index is typically cre-\nated using a specific embeddings model. If a different embed-\ndings model is used during querying (e.g., a different version of\nsentence-transformers), it may lead to retrieval mismatches or\nerrors. Always ensure that the same model is used both during in-\ndexing and querying.\nModel version issues Using an incorrect or unsupported model\nversion (e.g., referencing a non-existent version like Llama 4.5) can\nlead to failures during the model loading process. Always verify that\nthe model version you are using is supported and available.\nOverly general prompts Prompts that are too broad or generic\ncan result in vague or irrelevant",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p3:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  3,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "3. Creating Vector Embeddings:\nAfter preprocessing, the chunks of data are transformed into vector repre-\nsentations using embedding models (e.g., BERT, Sentence Transformers).\nThese vector embeddings capture the semantic meaning of the text, allow-\ning the system to perform similarity searches. The vector representations are\nstored in a Vector Store, an indexed database optimized for fast retrieval\nbased on similarity measures.",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 correctly names all-MiniLM-L6-v2 and its semantic search and text similarity tasks. Rank 2 discusses compatibility without naming that model. Rank 3 describes embeddings generally without identifying the example model. Only rank 1 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "A",
+        "question_id":  "q17",
+        "question":  "What suggestion did a participant make about sensitive data in OpenAI Vector Store?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  32,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p17:fixed:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  17,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "OpenAI’s infrastructure. OpenAI has specific policies regarding data access\nand usage to protect user privacy and data security. They state that they\ndo not use customer data to train their models unless explicitly permitted by\nthe user. For more details refer:https://openai.com/policies/privacy-policy/.\nAdditionally, the data stored can be deleted easily when necessary either via\ncode:https://platform.openai.com/docs/api-reference/files/delete or from the\nuser interface by clicking the delete b",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:fixed:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "most of them related\nto copying from PDF file generating errors as number of lines. In addition to\nthat, we implemented error handling to throw meaningful errors to the user in\nthe code snippets provided to seamlessly run the code.\n\nFig. 7: Feedback on challenges faced during the implementation of the guide\n\nSeveral participants also provided suggestions for future improvement. One\nnotable suggestion was to include a warning regarding sensitive data in OpenAI\nvector store. The detailed comment a",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p18:fixed:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  18,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "return file_ids\n\nexcept Exception as e:\nprint(f\"Error uploading files to vector store: {e}\n\")\nreturn None\n\n3. Creating and Managing Vector Stores in OpenAI\n\nOpenAI Vector stores are used to store files for use by the file search tool in\nAssistant API. This step involves initializing a vector store for storing vector\nembeddings of documents and retrieving them when needed.\n\nCode Example: Initialize a Vector Store for RAG\n\n# Get/Create Vector Store\ndef get_or_create_vector_store (client , vector_s",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 discusses privacy policies without the participant suggestion. Rank 2 correctly reports the suggestion to add a sensitive-data warning. Rank 3 describes vector-store creation without the suggestion. Only rank 2 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "B",
+        "question_id":  "q17",
+        "question":  "What suggestion did a participant make about sensitive data in OpenAI Vector Store?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  32,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:paragraph:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Several participants also provided suggestions for future improvement. One\nnotable suggestion was to include a warning regarding sensitive data in OpenAI\nvector store. The detailed comment are shown in Fig[8].\n\nIn conclusion, the evaluation process proved valuable in validating the ap-\nproach outlined in the guide. By testing it in a hands on workshop environment,\nand in an open discussion sessions of how the developed RAG models improved",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p17:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  17,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "OpenAI’s infrastructure. OpenAI has specific policies regarding data access\nand usage to protect user privacy and data security. They state that they\ndo not use customer data to train their models unless explicitly permitted by\nthe user. For more details refer:https://openai.com/policies/privacy-policy/.\nAdditionally, the data stored can be deleted easily when necessary either via\ncode:https://platform.openai.com/docs/api-reference/files/delete or from the\nuser interface by clicking the delete button here:\nhttps://platform.openai.com/storage/files/.\n\nCode Example: Upload PDF(s) to the OpenAI Vector Store",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p18:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  18,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "return file_ids\n\nexcept Exception as e:\nprint(f\"Error uploading files to vector store: {e}\n\")\nreturn None\n\n3. Creating and Managing Vector Stores in OpenAI\n\nOpenAI Vector stores are used to store files for use by the file search tool in\nAssistant API. This step involves initializing a vector store for storing vector\nembeddings of documents and retrieving them when needed.\n\nCode Example: Initialize a Vector Store for RAG\n\n# Get/Create Vector Store\ndef get_or_create_vector_store (client , vector_store_name ):\nif not vector_store_name :\nraise ValueError(\"Error: ’vector_store_name ’ is\nnot set. Please provide a valid vector store\nname.\")",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 correctly reports the suggestion to add a sensitive-data warning. Rank 2 discusses privacy policies without the suggestion. Rank 3 describes vector-store creation without the suggestion. Only rank 1 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "C",
+        "question_id":  "q17",
+        "question":  "What suggestion did a participant make about sensitive data in OpenAI Vector Store?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  32,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:paragraph:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Several participants also provided suggestions for future improvement. One\nnotable suggestion was to include a warning regarding sensitive data in OpenAI\nvector store. The detailed comment are shown in Fig[8].\n\nIn conclusion, the evaluation process proved valuable in validating the ap-\nproach outlined in the guide. By testing it in a hands on workshop environment,\nand in an open discussion sessions of how the developed RAG models improved",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p17:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  17,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "OpenAI’s infrastructure. OpenAI has specific policies regarding data access\nand usage to protect user privacy and data security. They state that they\ndo not use customer data to train their models unless explicitly permitted by\nthe user. For more details refer:https://openai.com/policies/privacy-policy/.\nAdditionally, the data stored can be deleted easily when necessary either via\ncode:https://platform.openai.com/docs/api-reference/files/delete or from the\nuser interface by clicking the delete button here:\nhttps://platform.openai.com/storage/files/.\n\nCode Example: Upload PDF(s) to the OpenAI Vector Store",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p18:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  18,
+                         "metadata":  {
+                                          "section":  "Common Mistakes and Best Practices",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "return file_ids\n\nexcept Exception as e:\nprint(f\"Error uploading files to vector store: {e}\n\")\nreturn None\n\n3. Creating and Managing Vector Stores in OpenAI\n\nOpenAI Vector stores are used to store files for use by the file search tool in\nAssistant API. This step involves initializing a vector store for storing vector\nembeddings of documents and retrieving them when needed.\n\nCode Example: Initialize a Vector Store for RAG\n\n# Get/Create Vector Store\ndef get_or_create_vector_store (client , vector_store_name ):\nif not vector_store_name :\nraise ValueError(\"Error: ’vector_store_name ’ is\nnot set. Please provide a valid vector store\nname.\")",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 correctly reports the suggestion to add a sensitive-data warning. Rank 2 discusses privacy policies without the suggestion. Rank 3 describes vector-store creation without the suggestion. Only rank 1 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "A",
+        "question_id":  "q18",
+        "question":  "What technical issue did workshop participants report when using the guide?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  32,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:fixed:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Key Feedback Points",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Fig. 6: Most Valuable Aspects of the Workshop.\n\nimplementation of RAG systems. Additionally, several participants mentioned\nthe discussions with peers and instructors as a key takeaway.\n\n5.4 Incorporating Feedback to Improve the Guide\n\nThe evaluation also revealed opportunities for improvement of guide, particularly\nin enhancing the clarity of instructions and streamlining the implementation\nprocess. The most common issues raised were technical, most of them related\nto copying from PDF file gene",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p33:fixed:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  33,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Fig. 8: Comments and suggestions for improving the guide\n\ntrustworthiness in specific scenarios, we were able to collect meaningful feed-\nback and directly address areas of difficulty faced by practitioners. The feedback\ndriven improvements have not only made the guide more user friendly but also\ndemonstrated the importance of continuous iteration based on real world use.\n\n6 Discussion\n\nPractitioners in fields like healthcare, legal analysis, and customer support, often\nstruggle with static mode",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p30:fixed:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  30,
+                         "metadata":  {
+                                          "section":  "Feedback Process Overview",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "endees were\nable to follow the provided guide and successfully implemented their RAG mod-\nels by the end of the session.\n\n5.2 Participants\n\n(a) Job Titles of Participants (b) Primary Area of Expertise\n\nFig. 3: Demographic Information from Participants\n\nWe collected feedback from a small but diverse group of participants during a\nworkshop. A total of 8 individuals completed a demographics form, which pro-\nvided us with an understanding of the participants’ backgrounds and technical\nexpertise. The",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  1,
+        "grounding_reason":  "Rank 1 partly identifies copying from the PDF but is cut off before explaining the resulting line-break errors; it does not supply the complete answer. Rank 2 discusses feedback improvements without identifying the issue. Rank 3 describes participant demographics. The top three contain partial evidence but omit the explanation of the copying errors needed for a complete answer."
+    },
+    {
+        "strategy":  "B",
+        "question_id":  "q18",
+        "question":  "What technical issue did workshop participants report when using the guide?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  32,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p30:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  30,
+                         "metadata":  {
+                                          "section":  "Preliminary Evaluation of the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "5 Preliminary Evaluation of the Guide",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p33:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  33,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Fig. 8: Comments and suggestions for improving the guide\n\ntrustworthiness in specific scenarios, we were able to collect meaningful feed-\nback and directly address areas of difficulty faced by practitioners. The feedback\ndriven improvements have not only made the guide more user friendly but also\ndemonstrated the importance of continuous iteration based on real world use.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "5.4 Incorporating Feedback to Improve the Guide\n\nThe evaluation also revealed opportunities for improvement of guide, particularly\nin enhancing the clarity of instructions and streamlining the implementation\nprocess. The most common issues raised were technical, most of them related\nto copying from PDF file generating errors as number of lines. In addition to\nthat, we implemented error handling to throw meaningful errors to the user in\nthe code snippets provided to seamlessly run the code.\n\nFig. 7: Feedback on challenges faced during the implementation of the guide",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 contains only an evaluation heading. Rank 2 discusses feedback improvements without identifying the issue. Rank 3 correctly reports errors caused by copying code from the PDF with line breaks. Only rank 3 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "C",
+        "question_id":  "q18",
+        "question":  "What technical issue did workshop participants report when using the guide?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  32,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p30:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  30,
+                         "metadata":  {
+                                          "section":  "Preliminary Evaluation of the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "5 Preliminary Evaluation of the Guide",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p33:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  33,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Fig. 8: Comments and suggestions for improving the guide\n\ntrustworthiness in specific scenarios, we were able to collect meaningful feed-\nback and directly address areas of difficulty faced by practitioners. The feedback\ndriven improvements have not only made the guide more user friendly but also\ndemonstrated the importance of continuous iteration based on real world use.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Incorporating Feedback to Improve the Guide",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "5.4 Incorporating Feedback to Improve the Guide\n\nThe evaluation also revealed opportunities for improvement of guide, particularly\nin enhancing the clarity of instructions and streamlining the implementation\nprocess. The most common issues raised were technical, most of them related\nto copying from PDF file generating errors as number of lines. In addition to\nthat, we implemented error handling to throw meaningful errors to the user in\nthe code snippets provided to seamlessly run the code.\n\nFig. 7: Feedback on challenges faced during the implementation of the guide",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 contains only an evaluation heading. Rank 2 discusses feedback improvements without identifying the issue. Rank 3 correctly reports errors caused by copying code from the PDF with line breaks. Only rank 3 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "A",
+        "question_id":  "q19",
+        "question":  "What does integrating a knowledge graph aim to improve in RAG systems?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  34,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p34:fixed:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  34,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "hybrid retrieval systems that combine the strengths of both dense and sparse\nsearch methods, optimizing retrieval speed and accuracy for large datasets[3].\n3. Integration with Knowledge Graphs: Researchers are exploring ways to\nintegrate RAG models with structured knowledge bases such as knowledge\ngraphs. This integration aims to improve the factual accuracy and reasoning\ncapabilities of the models, making them more reliable for knowledge-intensive\ntasks[8].\n4. Adaptive Learning and Continual Fi",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p33:fixed:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  33,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "set up and deployed RAG systems following the approaches\nmentioned. This contribution is practical, as it helps practitioners implement\nRAG models to address real world challenges with dynamic data and improved\naccuracy. The guide provides users clear, actionable steps to integrate RAG into\ntheir workflows, contributing to the growing toolkit of AI driven solutions.\nWith that, RAG also opens new research avenues that can shape the future\nof AI and NLP technologies. As these models and tools imp",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p31:fixed:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  31,
+                         "metadata":  {
+                                          "section":  "Key Feedback Points",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "op. After the workshop, there was a notable\nimprovement in participants’ understanding of RAG systems.\n\nFig. 5: Participants’ Improvement in Understanding RAG Systems.\n\nThe majority of participants highlighted the practical coding exercises as the\nmost valuable aspect of the workshop, which helped them better understand the",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 correctly links knowledge-graph integration to improved factual accuracy and reasoning capabilities. Rank 2 discusses RAG implementation generally. Rank 3 discusses workshop learning outcomes. Only rank 1 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "B",
+        "question_id":  "q19",
+        "question":  "What does integrating a knowledge graph aim to improve in RAG systems?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  34,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p5:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  5,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "2.2.2 RAG: Dynamic Information and Large Knowledge Bases Retrieval-\nAugmented Generation (RAG) combines LLMs with a retrieval mechanism that\nallows the model to access external data sources in real-time, making it suitable\nfor scenarios requiring up-to-date or frequently changing information. RAG sys-\ntems are valuable for handling vast knowledge bases, where embedding all the\ninformation directly into the model would be impractical or impossible.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p34:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  34,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "hybrid retrieval systems that combine the strengths of both dense and sparse\nsearch methods, optimizing retrieval speed and accuracy for large datasets[3].\n3. Integration with Knowledge Graphs: Researchers are exploring ways to\nintegrate RAG models with structured knowledge bases such as knowledge\ngraphs. This integration aims to improve the factual accuracy and reasoning\ncapabilities of the models, making them more reliable for knowledge-intensive\ntasks[8].\n4. Adaptive Learning and Continual Fine-Tuning: There is a growing\ninterest in adaptive learning techniques that allow RAG models to contin-\nuously fine-tune themselves based on new data and user feedback. This ap-\nproach aims to keep",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p34:paragraph:0005",
+                         "source":  "data/arxiv.pdf",
+                         "page":  34,
+                         "metadata":  {
+                                          "section":  "Conclusions",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "developers can avoid com-\nmon mistakes and ensure their RAG systems retrieve relevant information and\ngenerate accurate, fact-based responses. As technology advances in adaptive\nlearning, multi-modal capabilities, and retrieval methods, RAG systems will play\na key role in industries like healthcare, legal research, and technical documen-\ntation. This guide offers a solid foundation for optimizing RAG systems and\nextending the potential of generative AI in practical applications.",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 describes dynamic retrieval without knowledge-graph integration. Rank 2 correctly links knowledge-graph integration to factual accuracy and reasoning capabilities. Rank 3 discusses general RAG benefits without that link. Only rank 2 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "C",
+        "question_id":  "q19",
+        "question":  "What does integrating a knowledge graph aim to improve in RAG systems?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  34,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p5:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  5,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "2.2.2 RAG: Dynamic Information and Large Knowledge Bases Retrieval-\nAugmented Generation (RAG) combines LLMs with a retrieval mechanism that\nallows the model to access external data sources in real-time, making it suitable\nfor scenarios requiring up-to-date or frequently changing information. RAG sys-\ntems are valuable for handling vast knowledge bases, where embedding all the\ninformation directly into the model would be impractical or impossible.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p34:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  34,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "hybrid retrieval systems that combine the strengths of both dense and sparse\nsearch methods, optimizing retrieval speed and accuracy for large datasets[3].\n3. Integration with Knowledge Graphs: Researchers are exploring ways to\nintegrate RAG models with structured knowledge bases such as knowledge\ngraphs. This integration aims to improve the factual accuracy and reasoning\ncapabilities of the models, making them more reliable for knowledge-intensive\ntasks[8].\n4. Adaptive Learning and Continual Fine-Tuning: There is a growing\ninterest in adaptive learning techniques that allow RAG models to contin-\nuously fine-tune themselves based on new data and user feedback. This ap-\nproach aims to keep",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p34:paragraph:0005",
+                         "source":  "data/arxiv.pdf",
+                         "page":  34,
+                         "metadata":  {
+                                          "section":  "Conclusions",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "developers can avoid com-\nmon mistakes and ensure their RAG systems retrieve relevant information and\ngenerate accurate, fact-based responses. As technology advances in adaptive\nlearning, multi-modal capabilities, and retrieval methods, RAG systems will play\na key role in industries like healthcare, legal research, and technical documen-\ntation. This guide offers a solid foundation for optimizing RAG systems and\nextending the potential of generative AI in practical applications.",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 describes dynamic retrieval without knowledge-graph integration. Rank 2 correctly links knowledge-graph integration to factual accuracy and reasoning capabilities. Rank 3 discusses general RAG benefits without that link. Only rank 2 supplies the answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    },
+    {
+        "strategy":  "A",
+        "question_id":  "q20",
+        "question":  "With section=Discussion, what two kinds of capabilities are proposed to make future RAG models more versatile?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  34,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p10:fixed:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  10,
+                         "metadata":  {
+                                          "section":  "Study Design",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "The design also incorporates the feedback from a diverse group of partici-\npants during a workshop session, which focused on the practical aspects of imple-\nmenting RAG systems. Their input highlighted the effectiveness of the system’s\nreal-time retrieval capabilities, particularly in knowledge-intensive domains, and\nunderscored the importance of refining the integration between retrieval and\ngeneration to enhance the transparency and reliability of the system’s outputs.\nThis design sets the fou",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p6:fixed:0003",
+                         "source":  "data/arxiv.pdf",
+                         "page":  6,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "cialized, high-precision tasks with\nstable data; RAG should be used when access to dynamic, large-scale data is\nnecessary; and Base Models are well-suited for general-purpose use with low\nresource requirements.\n\n2.3 Understanding the Role of PDFs in RAG\n\nPDFs are paramount for RAG applications because they are widely used for\ndistributing high-value content like research papers, legal documents, technical\nmanuals, and financial reports, all of which contain dense, detailed information\nessential",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p5:fixed:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  5,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "time, making it suitable\nfor scenarios requiring up-to-date or frequently changing information. RAG sys-\ntems are valuable for handling vast knowledge bases, where embedding all the\ninformation directly into the model would be impractical or impossible.\n\nAdvantages: RAG is ideal for applications that require access to dynamic\ninformation, ensuring responses are grounded in real-time data and minimizing\nhallucinations. It also provides transparency, as the source of the retrieved in-\nformation ca",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  0,
+        "grounding_reason":  "Rank 1 discusses workshop feedback and system design. Rank 2 discusses model selection and PDFs. Rank 3 discusses dynamic information and transparency. None identifies cross-lingual retrieval and multimodal processing. The top three do not provide evidence answering the specific question."
+    },
+    {
+        "strategy":  "B",
+        "question_id":  "q20",
+        "question":  "With section=Discussion, what two kinds of capabilities are proposed to make future RAG models more versatile?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  34,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p32:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  32,
+                         "metadata":  {
+                                          "section":  "Key Feedback Points",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Fig. 6: Most Valuable Aspects of the Workshop.\n\nimplementation of RAG systems. Additionally, several participants mentioned\nthe discussions with peers and instructors as a key takeaway.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p7:paragraph:0000",
+                         "source":  "data/arxiv.pdf",
+                         "page":  7,
+                         "metadata":  {
+                                          "section":  "Understanding the Role of PDFs in RAG",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "highlights and comments) that provide extra context, helping RAG models pri-\noritize sections and better understand document structure, ultimately enhancing\nretrieval and generation accuracy.",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p5:paragraph:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  5,
+                         "metadata":  {
+                                          "section":  "Background",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Advantages: RAG is ideal for applications that require access to dynamic\ninformation, ensuring responses are grounded in real-time data and minimizing\nhallucinations. It also provides transparency, as the source of the retrieved in-\nformation can be linked directly.\n\nDrawbacks: RAG requires complex infrastructure, including vector databases\nand effective retrieval pipelines, and can be resource-intensive during inference.\n\nUse Case Examples:",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  0,
+        "grounding_reason":  "Rank 1 discusses workshop takeaways. Rank 2 discusses PDF annotations and document structure. Rank 3 discusses general RAG advantages and drawbacks. None identifies cross-lingual retrieval and multimodal processing. The top three do not provide evidence answering the specific question."
+    },
+    {
+        "strategy":  "C",
+        "question_id":  "q20",
+        "question":  "With section=Discussion, what two kinds of capabilities are proposed to make future RAG models more versatile?",
+        "gold_source_id":  "arxiv-rag-experience-report",
+        "gold_page":  34,
+        "top3":  [
+                     {
+                         "rank":  1,
+                         "chunk_id":  "arxiv-rag-experience-report:p34:paragraph:0001",
+                         "source":  "data/arxiv.pdf",
+                         "page":  34,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "models up-to-date and relevant in rapidly changing\ninformation environments[7].\n5. Cross-Lingual and Multimodal Capabilities: Future RAG models are\nexpected to expand their capabilities across different languages and modal-\nities. Incorporating cross-lingual retrieval and multimodal data processing\ncan make RAG models more versatile and applicable to a wider range of\nglobal and multimedia tasks[2].",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  2,
+                         "chunk_id":  "arxiv-rag-experience-report:p33:paragraph:0002",
+                         "source":  "data/arxiv.pdf",
+                         "page":  33,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "Practitioners in fields like healthcare, legal analysis, and customer support, often\nstruggle with static models that rely on outdated or limited knowledge. RAG\nmodels provide practical solutions with pulling in real time data from provided\nsources. The ability to explain and trace how RAG models reach their answers\nalso builds trust where accountability and decision making based on real evidence\nis important.\nIn this paper, we developed a RAG guide that we tested in a workshop setting,\nwhere participants set up and deployed RAG systems following the approaches\nmentioned. This contribution is practical, as it helps practitioners implement\nRAG models to address real world challenges with",
+                         "metadata_correct":  true
+                     },
+                     {
+                         "rank":  3,
+                         "chunk_id":  "arxiv-rag-experience-report:p33:paragraph:0003",
+                         "source":  "data/arxiv.pdf",
+                         "page":  33,
+                         "metadata":  {
+                                          "section":  "Discussion",
+                                          "text_extraction":  "ok"
+                                      },
+                         "text":  "dynamic data and improved\naccuracy. The guide provides users clear, actionable steps to integrate RAG into\ntheir workflows, contributing to the growing toolkit of AI driven solutions.\nWith that, RAG also opens new research avenues that can shape the future\nof AI and NLP technologies. As these models and tools improve, there are many\npotential areas for growth, such as finding better ways to search for information,\nadapting to new data automatically, and handling more than just text (like\nimages or audio). Recent advancements in tools and technologies have further\naccelerated the development and deployment of RAG models. As RAG models\ncontinue to evolve, several emerging trends are shaping",
+                         "metadata_correct":  true
+                     }
+                 ],
+        "grounding_score_0_to_2":  2,
+        "grounding_reason":  "Rank 1 correctly identifies cross-lingual retrieval and multimodal processing as capabilities that improve versatility. Rank 2 discusses RAG benefits without those capabilities. Rank 3 mentions images and audio generally but does not identify both requested capabilities. Only rank 1 supplies the complete answer. The top three provide sufficient evidence to answer the question and identify the source page."
+    }
+]

@@ -1,65 +1,72 @@
-# Starter · PostgreSQL + pgvector
+# Pipeline PDF → pgvector → retrieval A/B/C
 
-Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo PostgreSQL + pgvector local; các file trong `src/` là **khung pseudocode có TODO**, chưa đọc tài liệu, tạo embedding, lưu vector hay chạy benchmark. Bạn cần tự hiện thực. Vẫn có thể chọn Qdrant, Chroma hoặc vector store tương đương theo [GUIDE.md](../GUIDE.md).
+Pipeline đọc `data/arxiv.pdf` và `benchmark/arxiv-questions.json` tính từ root repo. Sử dụng cùng model `sentence-transformers/all-MiniLM-L6-v2` cho ba cấu hình: A fixed-size 500 ký tự/overlap 50; B paragraph tối đa 700 ký tự; C dùng cùng chunk và embedding với B, chỉ thêm section filter khi câu hỏi cung cấp.
 
-## Cấu trúc
+## Cài đặt lần đầu
 
-```text
-starter/
-├── docker-compose.yml     # PostgreSQL 16 + pgvector, chỉ mở cổng local
-├── init.sql               # bật extension khi tạo database mới
-├── requirements.txt       # psycopg, pypdf và python-dotenv
-├── .env.example           # cấu hình mẫu; copy thành .env
-├── scripts/check_setup.py # kiểm tra kết nối và extension (đã chạy được)
-├── src/
-│   ├── models.py          # cấu trúc dữ liệu mẫu
-│   ├── ingestion.py       # TODO: đọc / chuẩn hóa tài liệu
-│   ├── chunking.py        # TODO: chia chunk
-│   ├── embeddings.py      # TODO: chọn model API hoặc local
-│   ├── store.py           # TODO: lưu vector, metadata và filter
-│   ├── evaluation.py      # TODO: chấm truy xuất, lưu trace
-│   └── run.py             # TODO: kết nối các bước thành pipeline
-├── data/                  # bạn tự chuẩn bị corpus được phép sử dụng
-└── results/               # lưu kết quả của bạn
+Cần Python, Docker Desktop hoặc Docker Engine + Compose, và mạng để tải dependencies/model ở lần đầu. Môi trường đã dùng là Python 3.12. Các lệnh dưới đây chạy từ root repo bằng PowerShell:
+
+```powershell
+python -m venv starter/.venv
+.\starter\.venv\Scripts\python.exe -m pip install -r starter/requirements.txt
+Copy-Item starter/.env.example starter/.env
+docker compose -p day6_student_starter -f starter/docker-compose.yml up -d --wait
+.\starter\.venv\Scripts\python.exe starter/scripts/check_setup.py
 ```
 
-## 1. Cài và kiểm tra database
+Chỉ copy `.env.example` khi chưa có `.env`; giữ cấu hình local hiện có nếu đã setup. Không commit `.env`, API key hoặc `.venv`. Mặc định PostgreSQL dùng `127.0.0.1:55433` và mật khẩu cố định chỉ dành cho lab local. Nếu thay port, sửa đồng thời Compose và `DATABASE_URL`. `init.sql` chỉ chạy khi tạo volume mới; không xóa volume chứa dữ liệu để xử lý lỗi setup.
 
-Cần Docker Desktop hoặc Docker Engine + Compose, Python **3.11–3.14**, và mạng để tải image/dependencies lần đầu. Các lệnh sau chạy từ thư mục `starter/`:
+PDF có 36 trang vật lý, pipeline tính 33 trang nội dung. Nguồn, quyền dữ liệu, SHA-256, cách tải và thống kê từng trang nằm trong [manifest](data/manifest.yaml). Lưu PDF tại `data/arxiv.pdf` ở root repo, không phải `starter/data/arxiv.pdf`. Bộ câu hỏi và gold nằm trong [benchmark](../benchmark/arxiv-questions.json).
 
-```bash
+## Chạy benchmark
+
+Chỉ cần chạy khi muốn ingest hoặc tạo lại kết quả:
+
+```powershell
 cd starter
-python3 -m venv .venv
+.\.venv\Scripts\python.exe -m src.run
 ```
 
-Kích hoạt `.venv`: macOS/Linux dùng `source .venv/bin/activate`; Windows PowerShell dùng `.venv\Scripts\Activate.ps1`. Sau đó:
+Pipeline tạo schema nếu cần, ghi vectors A/B/C, chạy cùng 20 câu và xuất top-3 cùng metrics. Bảng `day6_chunks` lưu bền vững trong Docker volume `pg_data`. Truy xuất exact theo cosine; chunk có `document_id`, `source`, `page` và `section`. Khi ingest lại một tài liệu, chunk cũ của tài liệu đó trong cùng chiến lược được thay trong một transaction.
 
-```bash
-python -m pip install -r requirements.txt
-# macOS/Linux: cp .env.example .env
-# Windows PowerShell: Copy-Item .env.example .env
-docker compose -p day6_student_starter up -d --wait
-python scripts/check_setup.py
+Model chạy local, không cần API key; chi phí API là 0. Đầu vào vượt giới hạn token hoặc lỗi backend được báo lỗi; không fallback sang vector giả. `EMBEDDING_MODEL` trong `.env` có thể đổi model khi ingest, nhưng query phải dùng đúng model đã tạo vectors.
+
+**Chạy benchmark sẽ ghi đè các file JSON kết quả và tạo lại nhãn audit trống.** Sao lưu bản đã chấm trước khi chạy. Chạy demo trên database đã có dữ liệu không cần chạy lại benchmark.
+
+## Các file kết quả
+
+| File trong `results/` | Nội dung |
+|---|---|
+| [traces.json](results/traces.json) | 60 lượt truy xuất: 20 câu × 3 cấu hình; chunk text, score, metadata, gold và nhãn evidence |
+| [retrieval_accuracy.json](results/retrieval_accuracy.json) | Hit@1/Hit@3 dev/test, cấu hình, model, thống kê chunk và thời gian |
+| [chunk_coherence.json](results/chunk_coherence.json) | Cùng 10 vị trí nguồn cho A/B/C; điểm coherence 0–2 và lý do |
+| [grounding_quality.json](results/grounding_quality.json) | 5 câu test × 3 cấu hình; điểm grounding 0–2 và kiểm tra metadata |
+| [metadata_usefulness.md](results/metadata_usefulness.md) | Tổng hợp metadata đủ/đúng, filter compliance, tác dụng và giới hạn |
+
+Các mẫu JSON được code tạo, nhãn đánh giá được bổ sung sau. Báo cáo metadata Markdown và [experiment log](../artifacts/experiment_log.csv) được tổng hợp riêng; pipeline không cập nhật hai file này. Top-3 có thể ít hơn 3 khi filter không có đủ ứng viên. Phép đo `ingestion_and_chunking` hiện chỉ tính chunking, không gồm đọc PDF. Chưa lưu log lỗi của lần chạy được báo cáo.
+
+## Chạy demo, không lưu query
+
+Từ root repo:
+
+```powershell
+.\starter\.venv\Scripts\python.exe -B demo/app.py
 ```
 
-Kỳ vọng: hiện tên database, phiên bản PostgreSQL và pgvector, sau đó `Setup OK`. Đây **chỉ là kiểm tra hạ tầng**, không phải kết quả benchmark. Docker dùng cổng `127.0.0.1:55433` và mật khẩu cố định **chỉ dùng local cho lab**; nếu cổng bận, sửa đồng thời port trong `docker-compose.yml` và `DATABASE_URL` trong `.env`. `init.sql` chỉ chạy khi volume mới được tạo; nếu database sẵn có chưa bật extension, xem log Docker và kiểm tra cấu hình thay vì xóa volume chứa dữ liệu.
+Mở **http://127.0.0.1:8765**. Xem [demo/README.md](../demo/README.md) để biết các thao tác:
 
-Dừng container nhưng giữ dữ liệu:
+- Xem mọi câu benchmark và đối chiếu A/B/C từ kết quả đã lưu; không cần database.
+- Nhập câu hỏi mới, chọn một hoặc cả ba cấu hình; chọn section nếu muốn C lọc. C không có filter sẽ tìm giống B.
+- Xem top-3 chunk, cosine score, metadata và mở trang PDF. Không sinh câu trả lời LLM.
 
-```bash
-docker compose -p day6_student_starter stop
+Truy vấn mới dùng database chỉ đọc và model của kết quả đã lưu; không thay vectors hay các file audit. Lịch sử query mới chỉ tồn tại trong phiên trình duyệt.
+
+## Dừng database, giữ dữ liệu
+
+Từ root repo:
+
+```powershell
+docker compose -p day6_student_starter -f starter/docker-compose.yml stop
 ```
 
-## 2. Chọn embedding model
-
-Điền key tương ứng trong `.env` nếu dùng OpenRouter, OpenAI hoặc Gemini; **không commit `.env`**. Model local không cần API key. `requirements.txt` chỉ có dependencies cơ bản: tự cài SDK hoặc thư viện local phù hợp với model bạn chọn và ghi lại version/lệnh cài trong báo cáo. Ghi tên model và số chiều; dùng cùng model cho toàn bộ chiến lược và vector query tương thích vector document.
-
-## 3. Hoàn thiện pipeline
-
-1. Đặt corpus vào `data/` hoặc cung cấp manifest/hướng dẫn truy cập. Đọc [GUIDE.md](../GUIDE.md) về **30 trang nội dung**, quyền dữ liệu và metadata.
-2. Hoàn thiện từng hàm TODO trong `src/`. Lưu ID tài liệu, nguồn, trang/vị trí và ít nhất một trường filter có ích.
-3. Xây ít nhất ba cấu hình; ví dụ A fixed-size, B theo đoạn, C như B nhưng có filter. Cần cùng corpus, model và benchmark; nạp lại không nhân đôi và xử lý chunk cũ khi dữ liệu đổi.
-4. Tự viết ít nhất 20 câu hỏi kèm evidence, tách dev/test trước khi thử theo [BENCHMARK.md](../BENCHMARK.md). Lưu trace top-3 và báo cáo đủ năm tiêu chí.
-5. Sau khi hoàn thiện, chạy `python -m src.run` từ thư mục `starter/`. Trước khi làm TODO, lệnh này **chủ động báo `NotImplementedError`**.
-
-Lưu code, cấu hình, kết quả và lệnh chạy để người chấm tái lập; không commit key, dữ liệu mật hoặc dữ liệu không có quyền chia sẻ.
+Khởi động lại bằng lệnh `up -d --wait` ở phần setup; không cần ingest lại nếu volume vẫn còn.

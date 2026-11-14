@@ -1,0 +1,480 @@
+{
+    "method":  "First 10 useful content pages; compare chunks around the same page-start passage.",
+    "scale":  {
+                  "0":  "Cut mid-idea or missing context; not understandable.",
+                  "1":  "Partly understandable but missing context.",
+                  "2":  "Self-contained and preserves the complete idea."
+              },
+    "samples":  [
+                    {
+                        "sample_id":  "page-2",
+                        "source":  "data/arxiv.pdf",
+                        "page":  2,
+                        "source_anchor":  "decision making. Retrieval Augmented Generation (RAG) presents a powerful\nsolution to this problem. RAG systems pull in information from external data\nsources, like PDFs, databases",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p2:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  2,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Introduction"
+                                                                  },
+                                                     "text":  "decision making. Retrieval Augmented Generation (RAG) presents a powerful\nsolution to this problem. RAG systems pull in information from external data\nsources, like PDFs, databases, or websites, grounding the generated content in\naccurate and current data making it ideal for knowledge intensive tasks.\nIn this report, we document our experience as a step-by-step guide to build\nRAG systems that integrates PDF documents as the primary knowledge base.\nWe discuss the design choice, development of sys",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The RAG explanation is understandable, but the chunk opens with the fragment decision making and ends mid-word at sys, leaving the report description incomplete."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p2:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  2,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Introduction"
+                                                                  },
+                                                     "text":  "decision making. Retrieval Augmented Generation (RAG) presents a powerful\nsolution to this problem. RAG systems pull in information from external data\nsources, like PDFs, databases, or websites, grounding the generated content in\naccurate and current data making it ideal for knowledge intensive tasks.\nIn this report, we document our experience as a step-by-step guide to build\nRAG systems that integrates PDF documents as the primary knowledge base.\nWe discuss the design choice, development of system, and evaluation of the guide,\nproviding insights into the technical challenges encountered and the practical so-\nlutions applied. We detail our experience using both proprietary tools (OpenAI)\nand",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The chunk explains RAG and the report purpose, but opens with a sentence fragment and ends with OpenAI and, leaving the tools comparison unfinished."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p2:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  2,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Introduction"
+                                                                  },
+                                                     "text":  "decision making. Retrieval Augmented Generation (RAG) presents a powerful\nsolution to this problem. RAG systems pull in information from external data\nsources, like PDFs, databases, or websites, grounding the generated content in\naccurate and current data making it ideal for knowledge intensive tasks.\nIn this report, we document our experience as a step-by-step guide to build\nRAG systems that integrates PDF documents as the primary knowledge base.\nWe discuss the design choice, development of system, and evaluation of the guide,\nproviding insights into the technical challenges encountered and the practical so-\nlutions applied. We detail our experience using both proprietary tools (OpenAI)\nand",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The chunk explains RAG and the report purpose, but opens with a sentence fragment and ends with OpenAI and, leaving the tools comparison unfinished."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-3",
+                        "source":  "data/arxiv.pdf",
+                        "page":  3,
+                        "source_anchor":  "enhancing the model’s ability to respond.",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p3:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  3,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "enhancing the model’s ability to respond.\n\nFig. 1: Architecture of Retrieval Augmented Generation(RAG) system.\n\n2. Data Preprocessing:\nThe collected data is then preprocessed to create manageable and meaning-\nful chunks. Preprocessing involves cleaning the text (e.g., removing noise,\nformatting), normalizing it, and segmenting it into smaller units, such as to-\nkens (e.g., words or group of words), that can be easily indexed and retrieved\nlater. This segmentation is necessary to ensure that the",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The preprocessing heading and most of its explanation are understandable, but the opening sentence continues from the previous page and the final sentence is cut off at ensure that the."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p3:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  3,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "enhancing the model’s ability to respond.\n\nFig. 1: Architecture of Retrieval Augmented Generation(RAG) system.\n\n2. Data Preprocessing:\nThe collected data is then preprocessed to create manageable and meaning-\nful chunks. Preprocessing involves cleaning the text (e.g., removing noise,\nformatting), normalizing it, and segmenting it into smaller units, such as to-\nkens (e.g., words or group of words), that can be easily indexed and retrieved\nlater. This segmentation is necessary to ensure that the retrieval process is\naccurate and efficient.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The preprocessing subsection preserves its complete explanation, but the opening phrase enhancing the model ability to respond lacks its subject and the referenced figure is not included."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p3:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  3,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "enhancing the model’s ability to respond.\n\nFig. 1: Architecture of Retrieval Augmented Generation(RAG) system.\n\n2. Data Preprocessing:\nThe collected data is then preprocessed to create manageable and meaning-\nful chunks. Preprocessing involves cleaning the text (e.g., removing noise,\nformatting), normalizing it, and segmenting it into smaller units, such as to-\nkens (e.g., words or group of words), that can be easily indexed and retrieved\nlater. This segmentation is necessary to ensure that the retrieval process is\naccurate and efficient.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The preprocessing subsection preserves its complete explanation, but the opening phrase enhancing the model ability to respond lacks its subject and the referenced figure is not included."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-4",
+                        "source":  "data/arxiv.pdf",
+                        "page":  4,
+                        "source_anchor":  "date information to respond to the query.",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p4:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  4,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "date information to respond to the query.\n\n5. Augmentation of Context:\nBy merging two knowledge streams - the fixed, general knowledge embed-\nded in the LLM and the flexible, domain-specific information augmented on\ndemand as an additional layer of context, aligns the Large Language Model\n(LLM) with both established and emerging information.\n\n6. Generation of Response by LLM:\nThe context-infused prompt, consisting of the original user query combined\nwith the retrieved relevant content is provide",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The context-augmentation explanation is understandable, but the opening fragment lacks its preceding context and the response-generation explanation is cut off at is provide."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p4:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  4,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "date information to respond to the query.\n\n5. Augmentation of Context:\nBy merging two knowledge streams - the fixed, general knowledge embed-\nded in the LLM and the flexible, domain-specific information augmented on\ndemand as an additional layer of context, aligns the Large Language Model\n(LLM) with both established and emerging information.\n\n6. Generation of Response by LLM:\nThe context-infused prompt, consisting of the original user query combined\nwith the retrieved relevant content is provided to a Large Language Model\n(LLM) like GPT, T5 or Llama. The LLM then processes this augmented in-\nput to generate a coherent response not only fluent but factually grounded.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The augmentation and generation subsections preserve complete explanations, but the opening fragment date information to respond to the query continues a sentence from the previous page."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p4:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  4,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "date information to respond to the query.\n\n5. Augmentation of Context:\nBy merging two knowledge streams - the fixed, general knowledge embed-\nded in the LLM and the flexible, domain-specific information augmented on\ndemand as an additional layer of context, aligns the Large Language Model\n(LLM) with both established and emerging information.\n\n6. Generation of Response by LLM:\nThe context-infused prompt, consisting of the original user query combined\nwith the retrieved relevant content is provided to a Large Language Model\n(LLM) like GPT, T5 or Llama. The LLM then processes this augmented in-\nput to generate a coherent response not only fluent but factually grounded.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The augmentation and generation subsections preserve complete explanations, but the opening fragment date information to respond to the query continues a sentence from the previous page."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-5",
+                        "source":  "data/arxiv.pdf",
+                        "page":  5,
+                        "source_anchor":  "effective when dealing with stable data or when the model needs to adhere to a\nspecific tone and style.",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p5:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  5,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "effective when dealing with stable data or when the model needs to adhere to a\nspecific tone and style.\n\nDrawbacks: Fine-tuning is computationally expensive and often requires\nsubstantial resources for initial training. Additionally, it risks overfitting if the\ndataset is too narrow, making the model less generalizable.\n\nUse Case Examples:\n\n– Medical Diagnosis: A fine-tuned model on medical datasets becomes highly\nspecialized in understanding and generating medical advice based on specific\ntermi",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The fine-tuning drawbacks are understandable, but the opening sentence lacks its subject and the medical-diagnosis example ends mid-word at termi."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p5:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  5,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "effective when dealing with stable data or when the model needs to adhere to a\nspecific tone and style.\n\nDrawbacks: Fine-tuning is computationally expensive and often requires\nsubstantial resources for initial training. Additionally, it risks overfitting if the\ndataset is too narrow, making the model less generalizable.\n\nUse Case Examples:\n\n– Medical Diagnosis: A fine-tuned model on medical datasets becomes highly\nspecialized in understanding and generating medical advice based on specific\nterminologies and contexts.\n– Customer Support: For a software company, fine-tuning on company-\nspecific troubleshooting protocols ensures high-accuracy and consistent re-\nsponses tailored to user queries.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The fine-tuning drawbacks and examples are complete, but the opening statement about stable data lacks its subject and preceding context."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p5:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  5,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "effective when dealing with stable data or when the model needs to adhere to a\nspecific tone and style.\n\nDrawbacks: Fine-tuning is computationally expensive and often requires\nsubstantial resources for initial training. Additionally, it risks overfitting if the\ndataset is too narrow, making the model less generalizable.\n\nUse Case Examples:\n\n– Medical Diagnosis: A fine-tuned model on medical datasets becomes highly\nspecialized in understanding and generating medical advice based on specific\nterminologies and contexts.\n– Customer Support: For a software company, fine-tuning on company-\nspecific troubleshooting protocols ensures high-accuracy and consistent re-\nsponses tailored to user queries.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The fine-tuning drawbacks and examples are complete, but the opening statement about stable data lacks its subject and preceding context."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-6",
+                        "source":  "data/arxiv.pdf",
+                        "page":  6,
+                        "source_anchor":  "Advantages: No additional training is required, making it easy to deploy\nand maintain. It is best for general purpose tasks or when exploring potential\napplications without high up",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p6:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  6,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "Advantages: No additional training is required, making it easy to deploy\nand maintain. It is best for general purpose tasks or when exploring potential\napplications without high upfront costs.\n\nDrawbacks: Limited performance on domain specific queries or tasks that\nneed high levels of customization.\n\nTable 1: Decision Framework for Choosing Between Fine-Tuning, RAG, and\nBase Models\nFactors Fine-Tuning RAG Base Models\nNature of the Highly specialized Dynamic tasks need- General tasks, proto-\nTask",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The advantages and drawbacks are readable, but their subject is not named within the chunk. The flattened table begins without complete rows or reliable column relationships."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p6:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  6,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "Advantages: No additional training is required, making it easy to deploy\nand maintain. It is best for general purpose tasks or when exploring potential\napplications without high upfront costs.\n\nDrawbacks: Limited performance on domain specific queries or tasks that\nneed high levels of customization.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The advantages and drawbacks form complete sentences, but neither the heading nor the text names the model approach being evaluated; it and domain-specific limitations need preceding context."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p6:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  6,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Background"
+                                                                  },
+                                                     "text":  "Advantages: No additional training is required, making it easy to deploy\nand maintain. It is best for general purpose tasks or when exploring potential\napplications without high upfront costs.\n\nDrawbacks: Limited performance on domain specific queries or tasks that\nneed high levels of customization.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The advantages and drawbacks form complete sentences, but neither the heading nor the text names the model approach being evaluated; it and domain-specific limitations need preceding context."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-7",
+                        "source":  "data/arxiv.pdf",
+                        "page":  7,
+                        "source_anchor":  "highlights and comments) that provide extra context, helping RAG models pri-\noritize sections and better understand document structure, ultimately enhancing\nretrieval and generatio",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p7:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  7,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Understanding the Role of PDFs in RAG"
+                                                                  },
+                                                     "text":  "highlights and comments) that provide extra context, helping RAG models pri-\noritize sections and better understand document structure, ultimately enhancing\nretrieval and generation accuracy.\n\n2.3.1 Challenges of Working with PDFs In RAG applications, accurate\ntext extraction from PDFs is essential for effective retrieval and generation. How-\never, PDFs often feature complex layouts—such as multiple columns, headers,\nfooters, and embedded images—that complicate the extraction process. These\ncomp",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The PDF-layout challenges are understandable under their heading, but the opening annotations passage lacks its subject and the final sentence ends mid-word at comp."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p7:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  7,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Understanding the Role of PDFs in RAG"
+                                                                  },
+                                                     "text":  "highlights and comments) that provide extra context, helping RAG models pri-\noritize sections and better understand document structure, ultimately enhancing\nretrieval and generation accuracy.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The passage describes extra context and improved retrieval, but begins inside a parenthetical list at highlights and comments and omits the subject identifying what provides that context."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p7:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  7,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Understanding the Role of PDFs in RAG"
+                                                                  },
+                                                     "text":  "highlights and comments) that provide extra context, helping RAG models pri-\noritize sections and better understand document structure, ultimately enhancing\nretrieval and generation accuracy.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The passage describes extra context and improved retrieval, but begins inside a parenthetical list at highlights and comments and omits the subject identifying what provides that context."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-8",
+                        "source":  "data/arxiv.pdf",
+                        "page":  8,
+                        "source_anchor":  "2. Effective Chunking for Retrieval:\nPDF documents often contain large blocks of text, which can be challenging for\nretrieval models to handle effectively. Chunking the text into s",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p8:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  8,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Effective Chunking for Retrieval"
+                                                                  },
+                                                     "text":  "2. Effective Chunking for Retrieval:\nPDF documents often contain large blocks of text, which can be challenging for\nretrieval models to handle effectively. Chunking the text into smaller, contextu-\nally coherent pieces can improve retrieval performance.\n\n– Semantic Chunking: Instead of splitting text arbitrarily, use semantic\nchunking based on logical divisions within the text, such as paragraphs or\nsections. This ensures that each chunk retains its context, which is important\nfor both retrieval",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The heading and introductory explanation of chunking are complete, but the semantic-chunking bullet ends mid-sentence at both retrieval."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p8:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  8,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Effective Chunking for Retrieval"
+                                                                  },
+                                                     "text":  "2. Effective Chunking for Retrieval:\nPDF documents often contain large blocks of text, which can be challenging for\nretrieval models to handle effectively. Chunking the text into smaller, contextu-\nally coherent pieces can improve retrieval performance.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The heading identifies effective chunking for retrieval, and the complete paragraph explains the problem with large PDF text blocks and the benefit of smaller coherent pieces."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p8:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  8,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Effective Chunking for Retrieval"
+                                                                  },
+                                                     "text":  "2. Effective Chunking for Retrieval:\nPDF documents often contain large blocks of text, which can be challenging for\nretrieval models to handle effectively. Chunking the text into smaller, contextu-\nally coherent pieces can improve retrieval performance.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The heading identifies effective chunking for retrieval, and the complete paragraph explains the problem with large PDF text blocks and the benefit of smaller coherent pieces."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-9",
+                        "source":  "data/arxiv.pdf",
+                        "page":  9,
+                        "source_anchor":  "– Use Logging for Monitoring: Implement logging to capture detailed in-\nformation about the PDF processing steps, including successes, failures, and\nany anomalies. This is importan",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p9:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  9,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Error Handling and Reliability"
+                                                                  },
+                                                     "text":  "– Use Logging for Monitoring: Implement logging to capture detailed in-\nformation about the PDF processing steps, including successes, failures, and\nany anomalies. This is important for debugging and optimizing the applica-\ntion over time.\n\nBy following these key considerations and best practices, we can effectively\nprocess PDFs for RAG applications, ensuring high-quality text extraction, re-\ntrieval, and generation. This approach ensures that your RAG models are strong,\nefficient, and capable o",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The logging recommendation is complete and understandable, but the concluding paragraph ends mid-word at capable o."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p9:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  9,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Error Handling and Reliability"
+                                                                  },
+                                                     "text":  "– Use Logging for Monitoring: Implement logging to capture detailed in-\nformation about the PDF processing steps, including successes, failures, and\nany anomalies. This is important for debugging and optimizing the applica-\ntion over time.\n\nBy following these key considerations and best practices, we can effectively\nprocess PDFs for RAG applications, ensuring high-quality text extraction, re-\ntrieval, and generation. This approach ensures that your RAG models are strong,\nefficient, and capable of delivering meaningful insights from complex PDF doc-\numents.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The logging recommendation identifies what to record and why. The following conclusion completes its explanation of PDF-processing benefits without a broken boundary."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p9:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  9,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Error Handling and Reliability"
+                                                                  },
+                                                     "text":  "– Use Logging for Monitoring: Implement logging to capture detailed in-\nformation about the PDF processing steps, including successes, failures, and\nany anomalies. This is important for debugging and optimizing the applica-\ntion over time.\n\nBy following these key considerations and best practices, we can effectively\nprocess PDFs for RAG applications, ensuring high-quality text extraction, re-\ntrieval, and generation. This approach ensures that your RAG models are strong,\nefficient, and capable of delivering meaningful insights from complex PDF doc-\numents.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The logging recommendation identifies what to record and why. The following conclusion completes its explanation of PDF-processing benefits without a broken boundary."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-10",
+                        "source":  "data/arxiv.pdf",
+                        "page":  10,
+                        "source_anchor":  "The design also incorporates the feedback from a diverse group of partici-\npants during a workshop session, which focused on the practical aspects of imple-\nmenting RAG systems. Th",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p10:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  10,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Study Design"
+                                                                  },
+                                                     "text":  "The design also incorporates the feedback from a diverse group of partici-\npants during a workshop session, which focused on the practical aspects of imple-\nmenting RAG systems. Their input highlighted the effectiveness of the system’s\nreal-time retrieval capabilities, particularly in knowledge-intensive domains, and\nunderscored the importance of refining the integration between retrieval and\ngeneration to enhance the transparency and reliability of the system’s outputs.\nThis design sets the fou",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  1,
+                                                     "reason":  "The workshop-feedback paragraph is understandable, but the following statement ends mid-word at fou, leaving the design conclusion incomplete."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p10:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  10,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Study Design"
+                                                                  },
+                                                     "text":  "The design also incorporates the feedback from a diverse group of partici-\npants during a workshop session, which focused on the practical aspects of imple-\nmenting RAG systems. Their input highlighted the effectiveness of the system’s\nreal-time retrieval capabilities, particularly in knowledge-intensive domains, and\nunderscored the importance of refining the integration between retrieval and\ngeneration to enhance the transparency and reliability of the system’s outputs.\nThis design sets the foundation for a RAG system capable of addressing the\nneeds of domains requiring precise, up-to-date information.\n\n4 Results: Step-by-Step Guide to RAG",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The complete passage identifies workshop feedback, its findings, and its implications for RAG design. The following results heading is a section transition and does not interrupt a sentence."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p10:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  10,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Study Design"
+                                                                  },
+                                                     "text":  "The design also incorporates the feedback from a diverse group of partici-\npants during a workshop session, which focused on the practical aspects of imple-\nmenting RAG systems. Their input highlighted the effectiveness of the system’s\nreal-time retrieval capabilities, particularly in knowledge-intensive domains, and\nunderscored the importance of refining the integration between retrieval and\ngeneration to enhance the transparency and reliability of the system’s outputs.\nThis design sets the foundation for a RAG system capable of addressing the\nneeds of domains requiring precise, up-to-date information.\n\n4 Results: Step-by-Step Guide to RAG",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The complete passage identifies workshop feedback, its findings, and its implications for RAG design. The following results heading is a section transition and does not interrupt a sentence."
+                                                 }
+                                       }
+                    },
+                    {
+                        "sample_id":  "page-11",
+                        "source":  "data/arxiv.pdf",
+                        "page":  11,
+                        "source_anchor":  "1. Download and Install VSCode\n– Visit the official VSCode website: https://code.visualstudio.com/.\n– Select your operating system (Windows, macOS, or Linux) and follow\nthe instruc",
+                        "strategies":  {
+                                           "A":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p11:fixed:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  11,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Setting Up the Environment"
+                                                                  },
+                                                     "text":  "1. Download and Install VSCode\n– Visit the official VSCode website: https://code.visualstudio.com/.\n– Select your operating system (Windows, macOS, or Linux) and follow\nthe instructions for installation.\n\n2. Install the Python Extension in VSCode\n– Open VSCode.\n– Click on the Extensions tab on the left-hand side (it looks like a square\nwith four pieces).\n– In the Extensions Marketplace, search for Python.\n– Install the Python extension by Microsoft. This will allow VSCode to\nsupport Python code.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The chunk contains complete numbered instructions for installing VSCode and its Python extension. The subjects, actions, and outcomes are explicit without needing adjacent chunks."
+                                                 },
+                                           "B":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p11:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  11,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Setting Up the Environment"
+                                                                  },
+                                                     "text":  "1. Download and Install VSCode\n– Visit the official VSCode website: https://code.visualstudio.com/.\n– Select your operating system (Windows, macOS, or Linux) and follow\nthe instructions for installation.\n\n2. Install the Python Extension in VSCode\n– Open VSCode.\n– Click on the Extensions tab on the left-hand side (it looks like a square\nwith four pieces).\n– In the Extensions Marketplace, search for Python.\n– Install the Python extension by Microsoft. This will allow VSCode to\nsupport Python code.\n\n4.1.3 Setting Up a Virtual Environment A virtual environment allows\nyou to install libraries and dependencies specific to your project without affecting\nother projects on your machine.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The chunk preserves complete VSCode and Python-extension installation steps and a complete explanation of the purpose of a virtual environment."
+                                                 },
+                                           "C":  {
+                                                     "chunk_id":  "arxiv-rag-experience-report:p11:paragraph:0000",
+                                                     "source":  "data/arxiv.pdf",
+                                                     "page":  11,
+                                                     "metadata":  {
+                                                                      "text_extraction":  "ok",
+                                                                      "section":  "Setting Up the Environment"
+                                                                  },
+                                                     "text":  "1. Download and Install VSCode\n– Visit the official VSCode website: https://code.visualstudio.com/.\n– Select your operating system (Windows, macOS, or Linux) and follow\nthe instructions for installation.\n\n2. Install the Python Extension in VSCode\n– Open VSCode.\n– Click on the Extensions tab on the left-hand side (it looks like a square\nwith four pieces).\n– In the Extensions Marketplace, search for Python.\n– Install the Python extension by Microsoft. This will allow VSCode to\nsupport Python code.\n\n4.1.3 Setting Up a Virtual Environment A virtual environment allows\nyou to install libraries and dependencies specific to your project without affecting\nother projects on your machine.",
+                                                     "anchor_matched":  true,
+                                                     "coherence_score_0_to_2":  2,
+                                                     "reason":  "The chunk preserves complete VSCode and Python-extension installation steps and a complete explanation of the purpose of a virtual environment."
+                                                 }
+                                       }
+                    }
+                ]
+}

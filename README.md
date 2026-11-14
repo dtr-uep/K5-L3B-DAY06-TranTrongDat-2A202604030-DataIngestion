@@ -10,7 +10,19 @@ Biến tài liệu thành kho tri thức có thể truy xuất cho AI agent, r�
 
 ## Bắt đầu nhanh
 
-Dùng [starter PostgreSQL + pgvector](starter/README.md) để dựng database và hoàn thiện các hàm TODO, hoặc tự chọn vector store tương đương. Starter chỉ là khung: **bạn tự hiện thực pipeline và benchmark**.
+Pipeline hiện dùng PDF arXiv:2410.15944v1, Sentence Transformers và PostgreSQL + pgvector. Benchmark gồm 20 câu (15 dev / 5 test), so sánh fixed-size (A), paragraph (B) và paragraph có section filter (C).
+
+- [Cài đặt và chạy pipeline](starter/README.md).
+- [Demo giao diện và thử query mới](demo/README.md).
+- [Báo cáo cá nhân](report/individual/2A202604030_TranTrongDat.md), [manifest](starter/data/manifest.yaml) và [experiment log](artifacts/experiment_log.csv).
+
+Nếu đã có môi trường Python trong `starter/.venv`, chạy demo từ root repo:
+
+```powershell
+.\starter\.venv\Scripts\python.exe -B demo/app.py
+```
+
+Mở **http://127.0.0.1:8765** để xem kết quả đã lưu của A/B/C. Phần thử query mới cần database đang chạy và chứa vectors đã ingest. Demo không ghi query vào file kết quả hoặc database.
 
 ## 1. Xây pipeline
 
@@ -29,7 +41,7 @@ Dùng cùng dữ liệu, model và câu hỏi cho cả ba cấu hình. Tách **1
 ## 3. Chuẩn bị bài nộp
 
 1. Chạy pipeline và lưu cấu hình, kết quả top-3, trace cùng nhãn đánh giá thủ công.
-2. Điền [thông tin học viên](STUDENT.md), [nhật ký thí nghiệm](artifacts/experiment_log.csv) và bản sao [mẫu báo cáo cá nhân](report/individual/MSSV_HoTen.md).
+2. Điền [thông tin học viên](STUDENT.md), [nhật ký thí nghiệm](artifacts/experiment_log.csv) và [báo cáo cá nhân](report/individual/2A202604030_TranTrongDat.md).
 3. Kiểm tra mã nguồn, cách chạy, manifest dữ liệu và checklist trong [SUBMISSION.md](SUBMISSION.md).
 
 ## Tài liệu hướng dẫn

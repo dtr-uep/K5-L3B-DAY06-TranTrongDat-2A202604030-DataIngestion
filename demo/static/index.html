@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/">Demo</a>
+    <nav class="mode-switch" aria-label="Chế độ"><button id="saved-mode" class="active">Kết quả đã lưu</button><button id="live-mode">Thử query mới</button></nav>
+    <div id="saved-controls">
+      <label class="side-label" for="question-search">Câu hỏi <span id="question-count">20</span></label>
+      <input id="question-search" type="search" placeholder="Tìm câu hỏi hoặc ID…">
+      <div class="split-controls" role="group" aria-label="Lọc tập câu hỏi"><button data-split="all" class="active">Tất cả</button><button data-split="dev">Dev</button><button data-split="test">Test</button></div>
+      <div id="question-list" class="question-list"></div>
+    </div>
+    <div id="live-sidebar" hidden><div class="side-label">Truy vấn trong phiên</div><div id="history" class="question-list"></div></div>
+  </aside>
+  <main>
+    <section class="page-intro"><h1 id="page-title">Kết quả đã lưu</h1><p id="page-description">So sánh top-3 chunk của A, B và C trên cùng một câu hỏi.</p></section>
+    <div class="stat-strip"><div><strong id="stat-questions">20</strong><span>câu benchmark</span></div><div><strong>33</strong><span>trang nội dung</span></div><div><strong>384</strong><span>chiều embedding</span></div><div><strong>Top 3</strong><span>chunk / cấu hình</span></div><span class="model-name">all-MiniLM-L6-v2</span></div>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section id="live-panel" class="query-panel" hidden>
+      <form id="query-form">
+        <label for="query-input">Câu hỏi</label>
+        <textarea id="query-input" rows="3" maxlength="2000" required placeholder="Ví dụ: What should determine chunk size for a document?"></textarea>
+        <div class="query-options"><label>Cấu hình<select id="strategy"><option value="all">So sánh A + B + C</option><option value="A">A · Fixed-size</option><option value="B">B · Paragraph</option><option value="C">C · Paragraph + filter</option></select></label><label>Section filter cho C<select id="section"><option value="">Không lọc</option></select></label><button id="load-sections" type="button" class="secondary">Tải section từ DB</button><button id="run-query" type="submit" class="primary">Truy xuất</button></div>
+        <p class="form-hint">A/B tìm trong toàn bộ chunk. C chỉ lọc khi chọn section. Kết quả mới chỉ giữ trong phiên hiện tại; tải lại trang sẽ xóa.</p>
+      </form>
+    </section>
+    <section id="question-detail" class="question-detail" hidden></section>
+    <section id="result-area" hidden><div class="results-heading"><h2>Đối chiếu kết quả</h2><span>Score = cosine similarity, không phải xác suất đúng</span></div><div id="results" class="result-grid"></div></section>
+    <div id="live-empty" class="empty-state" hidden><p>Nhập query để xem top-3 chunk từ database. Lần đầu có thể cần thời gian tải model.</p></div>
+  </main>
+</body>
+</html>

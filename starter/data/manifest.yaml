@@ -1,0 +1,86 @@
+source_id: arxiv-rag-experience-report
+document_id: arxiv-rag-experience-report
+source_path_or_url: "data/arxiv.pdf"
+accessed_at: "2026-11-14"
+license_or_permission: "arXiv non-exclusive distribution license; truy cập PDF trực tiếp từ arXiv theo hướng dẫn tải bên dưới."
+title: "Developing Retrieval Augmented Generation (RAG) based LLM Systems from PDFs: An Experience Report"
+authors:
+  - Ayman Asad Khan
+  - Md Toufique Hasan
+  - Kai Kristian Kemell
+  - Jussi Rasku
+  - Pekka Abrahamsson
+
+source:
+  publisher: arXiv
+  arxiv_id: "2410.15944"
+  version: v1
+  submitted_date: "2024-10-21"
+  url: "https://arxiv.org/abs/2410.15944"
+  pdf_url: "https://arxiv.org/pdf/2410.15944v1"
+
+file:
+  path: "data/arxiv.pdf"
+  path_base: repository_root
+  sha256: "957bb3ec388e9b3256841989960943b0576ae5885b35cf9c71474825d46d1ca0"
+  format: pdf
+  page_count: 36
+  useful_content_pages: 33
+  useful_page_range: [2, 34]
+  page_counting_rule: "Đếm theo trang vật lý của PDF, bắt đầu từ 1. Tính các trang 2–34 có nội dung; loại trang 1 (tiêu đề và tóm tắt), 35 (tài liệu tham khảo), 36 (phụ lục). Không nhân bản trang."
+  excluded_pages:
+    - 1  # title and abstract
+    - 35 # references
+    - 36 # appendix
+  normalization: "PyMuPDF get_text(text, sort=True); Unicode NFC; chuẩn hóa xuống dòng và khoảng trắng; bỏ số trang ở đầu/cuối bằng src.ingestion.load_pdf."
+  character_count_rule: "len(page.text) sau chuẩn hóa, trước chunking; tính cả khoảng trắng và xuống dòng còn lại."
+  total_content_characters: 63870
+  content_pages:
+    - {page: 2, characters: 2830}
+    - {page: 3, characters: 1389}
+    - {page: 4, characters: 2542}
+    - {page: 5, characters: 2314}
+    - {page: 6, characters: 2398}
+    - {page: 7, characters: 2827}
+    - {page: 8, characters: 2618}
+    - {page: 9, characters: 2963}
+    - {page: 10, characters: 2109}
+    - {page: 11, characters: 1661}
+    - {page: 12, characters: 2639}
+    - {page: 13, characters: 2322}
+    - {page: 14, characters: 1370}
+    - {page: 15, characters: 1853}
+    - {page: 16, characters: 2220}
+    - {page: 17, characters: 1760}
+    - {page: 18, characters: 1421}
+    - {page: 19, characters: 2030}
+    - {page: 20, characters: 1292}
+    - {page: 21, characters: 2241}
+    - {page: 22, characters: 1243}
+    - {page: 23, characters: 1237}
+    - {page: 24, characters: 1810}
+    - {page: 25, characters: 1309}
+    - {page: 26, characters: 1712}
+    - {page: 27, characters: 1571}
+    - {page: 28, characters: 1288}
+    - {page: 29, characters: 2186}
+    - {page: 30, characters: 1465}
+    - {page: 31, characters: 1225}
+    - {page: 32, characters: 1202}
+    - {page: 33, characters: 2340}
+    - {page: 34, characters: 2483}
+
+rights:
+  license: "arXiv non-exclusive distribution license"
+  license_url: "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html"
+  permission_scope: "Giấy phép công bố cấp quyền phân phối cho arXiv. Hướng dẫn này sử dụng đường dẫn tải từ arXiv."
+
+acquisition:
+  method: manual_download
+  source_url: "https://arxiv.org/pdf/2410.15944v1"
+  steps:
+    - "Mở https://arxiv.org/abs/2410.15944v1 trên trình duyệt."
+    - "Chọn View PDF hoặc mở trực tiếp https://arxiv.org/pdf/2410.15944v1."
+    - "Tải PDF về máy và đổi tên thành arxiv.pdf."
+    - "Lưu file vào data/arxiv.pdf tính từ thư mục gốc repo."
+    - "Đối chiếu SHA-256 và số trang trong manifest trước khi chạy pipeline."

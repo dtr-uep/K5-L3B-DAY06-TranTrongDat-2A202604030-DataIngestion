@@ -8,3 +8,6 @@ __pycache__/
 .DS_Store
 .pytest_cache/
 *.sqlite
+
+# Download the corpus PDF using starter/data/manifest.yaml.
+/data/arxiv.pdf

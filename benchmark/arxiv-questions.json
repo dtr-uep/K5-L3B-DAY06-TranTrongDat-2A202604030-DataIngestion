@@ -1,0 +1,226 @@
+{
+  "corpus": {
+    "source_id": "arxiv-rag-experience-report",
+    "source": "data/arxiv.pdf",
+    "title": "Developing Retrieval Augmented Generation (RAG) based LLM Systems from PDFs: An Experience Report",
+    "physical_page_count": 36,
+    "estimated_useful_content_pages": 33,
+    "content_page_requirement_met": true,
+    "page_note": "The estimate counts PDF pages 2-34 as content and excludes the title/abstract page, references (page 35), and appendix (page 36).",
+    "filter_metadata": "For filter questions, populate the chunk metadata field section from the printed section or subsection heading. Apply the filter only when the question supplies that section."
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "type": "direct",
+      "split": "dev",
+      "question": "Why can a traditional generative model give outdated answers?",
+      "expected_answer": "Its internal knowledge has a fixed cutoff based on its training data.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 2,
+      "evidence_quote": "Traditional generative models, such as GPT, BERT, or T5 are trained on massive datasets but have a fixed internal knowledge cut off based on their training data."
+    },
+    {
+      "id": "q02",
+      "type": "direct",
+      "split": "dev",
+      "question": "Which two NLP components does RAG combine?",
+      "expected_answer": "Information Retrieval (IR) and Natural Language Generation (NLG).",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 2,
+      "evidence_quote": "The concept of Retrieval Augmented Generation (RAG) models is built on integrating two core components of NLP: Information Retrieval (IR) and Natural Language Generation (NLG)."
+    },
+    {
+      "id": "q03",
+      "type": "direct",
+      "split": "dev",
+      "question": "What do the document embeddings allow the RAG system to do?",
+      "expected_answer": "Capture text meaning and perform similarity searches.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 3,
+      "evidence_quote": "These vector embeddings capture the semantic meaning of the text, allowing the system to perform similarity searches."
+    },
+    {
+      "id": "q04",
+      "type": "process",
+      "split": "dev",
+      "question": "How does the retriever find content for an incoming query?",
+      "expected_answer": "It embeds the query like the documents and searches the vector store for the most relevant chunks.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 3,
+      "evidence_quote": "When a Query is input into the system, it is first transformed into a vector embedding, similar to the documents in the vector store. The Retriever component then performs a search within the vector store to identify and retrieve the most relevant chunks of information related to the query."
+    },
+    {
+      "id": "q05",
+      "type": "process",
+      "split": "dev",
+      "question": "What is combined in the context-infused prompt sent to the language model?",
+      "expected_answer": "The original user query and the retrieved relevant content.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 4,
+      "evidence_quote": "The context-infused prompt, consisting of the original user query combined with the retrieved relevant content is provided to a Large Language Model (LLM) like GPT, T5 or Llama."
+    },
+    {
+      "id": "q06",
+      "type": "comparison",
+      "split": "dev",
+      "question": "What are two drawbacks of fine-tuning identified in the paper?",
+      "expected_answer": "It is computationally expensive and can overfit when the dataset is too narrow, reducing generalizability.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 5,
+      "evidence_quote": "Fine-tuning is computationally expensive and often requires substantial resources for initial training. Additionally, it risks overfitting if the dataset is too narrow, making the model less generalizable."
+    },
+    {
+      "id": "q07",
+      "type": "direct",
+      "split": "dev",
+      "question": "Why do complex PDF layouts challenge RAG systems?",
+      "expected_answer": "They complicate text extraction, and RAG systems rely on clean, structured text for high-quality retrieval.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 7,
+      "evidence_quote": "These complexities challenge RAG systems, which rely on clean, structured text for high-quality retrieval."
+    },
+    {
+      "id": "q08",
+      "type": "metadata_filter",
+      "split": "dev",
+      "question": "With section=Effective Chunking for Retrieval, what kind of boundaries should semantic chunking follow?",
+      "expected_answer": "Logical divisions in the text, such as paragraphs or sections, so chunks retain context.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 8,
+      "evidence_quote": "Instead of splitting text arbitrarily, use semantic chunking based on logical divisions within the text, such as paragraphs or sections. This ensures that each chunk retains its context",
+      "filter": {
+        "section": "Effective Chunking for Retrieval"
+      }
+    },
+    {
+      "id": "q09",
+      "type": "direct",
+      "split": "dev",
+      "question": "What should determine chunk size for a document?",
+      "expected_answer": "The content type and the model's input limitations.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 8,
+      "evidence_quote": "Adjust the chunk size according to the content type and the model's input limitations."
+    },
+    {
+      "id": "q10",
+      "type": "direct",
+      "split": "dev",
+      "question": "Name examples of irrelevant PDF text that preprocessing should remove.",
+      "expected_answer": "Headers, footers, page numbers, and repeating text that does not contribute to the document's meaning.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 8,
+      "evidence_quote": "clean up non-relevant content like headers, footers, page numbers, and any repeating text that doesn't contribute to the document's meaning."
+    },
+    {
+      "id": "q11",
+      "type": "direct",
+      "split": "dev",
+      "question": "Which PDF metadata examples does the paper say can add context to retrieval?",
+      "expected_answer": "The author, title, and creation date.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 8,
+      "evidence_quote": "PDFs often contain metadata (such as the author, title, and creation date) and annotations that provide additional context"
+    },
+    {
+      "id": "q12",
+      "type": "process",
+      "split": "dev",
+      "question": "How does the paper recommend handling errors during PDF processing?",
+      "expected_answer": "Use try-except blocks to manage potential errors and log issues for later analysis.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 8,
+      "evidence_quote": "Use try-except blocks to manage potential errors during PDF processing. This ensures the application continues running smoothly and logs any issues for later analysis."
+    },
+    {
+      "id": "q13",
+      "type": "direct",
+      "split": "dev",
+      "question": "What should PDF-processing logs capture, and why?",
+      "expected_answer": "Successes, failures, and anomalies, to help debug and optimize the application.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 9,
+      "evidence_quote": "Implement logging to capture detailed information about the PDF processing steps, including successes, failures, and any anomalies. This is important for debugging and optimizing the application over time."
+    },
+    {
+      "id": "q14",
+      "type": "metadata_filter",
+      "split": "dev",
+      "question": "With section=Common Mistakes and Best Practices, what default chunk size and overlap does the paper report for OpenAI Vector Stores?",
+      "expected_answer": "A maximum chunk size of 800 tokens and an overlap of 400 tokens.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 19,
+      "evidence_quote": "By default OpenAI uses a max chunk size tokens of 800 and chunk overlap tokens of 400 to chunk the file(s) for Vector Stores.",
+      "filter": {
+        "section": "Common Mistakes and Best Practices"
+      }
+    },
+    {
+      "id": "q15",
+      "type": "metadata_filter",
+      "split": "dev",
+      "question": "With section=Common Mistakes and Best Practices, how can adding context to a query improve retrieval?",
+      "expected_answer": "It can improve retrieval quality; relevance feedback or pseudo-relevance feedback can refine search results.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 19,
+      "evidence_quote": "Incorporate additional contextual information when forming queries to improve retrieval quality. Using techniques like relevance feedback or pseudo-relevance feedback can help refine search results.",
+      "filter": {
+        "section": "Common Mistakes and Best Practices"
+      }
+    },
+    {
+      "id": "q16",
+      "type": "direct",
+      "split": "test",
+      "question": "Which embedding model is used in the paper's FAISS example, and what kinds of tasks is it described as suitable for?",
+      "expected_answer": "sentence-transformers/all-MiniLM-L6-v2; semantic search and text similarity.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 26,
+      "evidence_quote": "sentence-transformers/all-MiniLM-L6-v2 is a compact, fast transformer model that generates sentence embeddings for tasks like semantic search and text similarity."
+    },
+    {
+      "id": "q17",
+      "type": "direct",
+      "split": "test",
+      "question": "What suggestion did a participant make about sensitive data in OpenAI Vector Store?",
+      "expected_answer": "Add a warning about sensitive data in OpenAI Vector Store.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 32,
+      "evidence_quote": "One notable suggestion was to include a warning regarding sensitive data in OpenAI vector store."
+    },
+    {
+      "id": "q18",
+      "type": "direct",
+      "split": "test",
+      "question": "What technical issue did workshop participants report when using the guide?",
+      "expected_answer": "Copying code from the PDF caused errors because of line breaks.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 32,
+      "evidence_quote": "The most common issues raised were technical, most of them related to copying from PDF file generating errors as number of lines."
+    },
+    {
+      "id": "q19",
+      "type": "direct",
+      "split": "test",
+      "question": "What does integrating a knowledge graph aim to improve in RAG systems?",
+      "expected_answer": "Factual accuracy and reasoning capabilities.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 34,
+      "evidence_quote": "This integration aims to improve the factual accuracy and reasoning capabilities of the models"
+    },
+    {
+      "id": "q20",
+      "type": "metadata_filter",
+      "split": "test",
+      "question": "With section=Discussion, what two kinds of capabilities are proposed to make future RAG models more versatile?",
+      "expected_answer": "Cross-lingual retrieval and multimodal data processing.",
+      "gold_source_id": "arxiv-rag-experience-report",
+      "gold_page": 34,
+      "evidence_quote": "Incorporating cross-lingual retrieval and multimodal data processing can make RAG models more versatile and applicable to a wider range of global and multimedia tasks.",
+      "filter": {
+        "section": "Discussion"
+      }
+    }
+  ]
+}
